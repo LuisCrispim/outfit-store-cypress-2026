@@ -1,7 +1,9 @@
-name: 'Execução Manual'
+name: 'Execução Push'
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   e2e-tests:
