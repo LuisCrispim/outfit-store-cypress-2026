@@ -1,4 +1,4 @@
-nome: 'Execução Manual'
+name: 'Execução Manual'
 
 on: 
    workflow_dispatch: 
