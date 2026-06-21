@@ -1,0 +1,28 @@
+name: 'Execução Agendada'
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+    - cron: '59 23 * * 5'
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: npm
+
+      - name: Instalando dependências
+        run: npm ci
+
+      - name: Executando os testes e2e
+        env:
+          CYPRESS_email: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_senha: ${{ secrets.CYPRESS_SENHA }}
+          CYPRESS_usuario: ${{ secrets.CYPRESS_USUARIO }}
+        run: npm run cy:run
