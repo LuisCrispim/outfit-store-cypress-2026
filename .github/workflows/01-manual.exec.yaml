@@ -1,0 +1,28 @@
+nome: 'Execução Manual'
+
+on: 
+   workflow_dispatch: 
+
+
+jobs: 
+  e2e-tests: 
+    runs-on: unbuntu-latest
+
+    steps: 
+       - uses: actions/checkout@v4
+       - uses: actions/setup-node@v4
+         with:
+           node-version: latest
+
+
+
+       - name: Instalando npm
+         run: npm install -y
+       
+       - name: Instalando cypress
+         run: npm i cypress -D
+
+       - name: Executando os testes e2e
+         run: npm run cy:run
+
+
