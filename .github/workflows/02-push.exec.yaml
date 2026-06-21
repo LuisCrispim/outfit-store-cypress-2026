@@ -31,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
-          path: cypress/reports
+          path: cypress/reports/mochawesome
           name: Relatório de Testes E2E

@@ -2,10 +2,12 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   video: false,
-  reporter: 'junit',
+  reporter: 'mochawesome',
   reporterOptions: {
-    mochaFile: 'cypress/reports/junit/results-[hash].xml',
-    toConsole: true,
+    reportDir: 'cypress/reports/mochawesome',
+    overwrite: false,
+    html: true,
+    json: false,
   },
 
   e2e: {
