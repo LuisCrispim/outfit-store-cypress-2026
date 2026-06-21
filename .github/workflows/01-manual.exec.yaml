@@ -1,3 +1,5 @@
+# CI de nível 01 - Disparo manual através de clique
+
 name: 'Execução Manual'
 
 on: 
