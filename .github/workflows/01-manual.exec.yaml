@@ -1,4 +1,4 @@
-name: 'Execução Manual'
+name: "Execução Manual"
 
 on:
   workflow_dispatch:
@@ -19,8 +19,8 @@ jobs:
         run: npm ci
 
       - name: Executando os testes e2e
+        env:
+          CYPRESS_email: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_senha: ${{ secrets.CYPRESS_SENHA }}
+          CYPRESS_usuario: ${{ secrets.CYPRESS_USUARIO }}
         run: npm run cy:run
-         env:
-            CYPRESS_email: ${{ secrets.CYPRESS_EMAIL }}
-            CYPRESS_senha: ${{ secrets.CYPRESS_SENHA }}
-            CYPRESS_usuario: ${{ secrets.CYPRESS_USUARIO }} 
