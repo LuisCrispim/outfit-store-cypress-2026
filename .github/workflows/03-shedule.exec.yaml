@@ -26,3 +26,5 @@ jobs:
           CYPRESS_senha: ${{ secrets.CYPRESS_SENHA }}
           CYPRESS_usuario: ${{ secrets.CYPRESS_USUARIO }}
         run: npm run cy:run
+
+      
