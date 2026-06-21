@@ -20,3 +20,7 @@ jobs:
 
       - name: Executando os testes e2e
         run: npm run cy:run
+         env:
+            CYPRESS_email: ${{ secrets.CYPRESS_EMAIL }}
+            CYPRESS_senha: ${{ secrets.CYPRESS_SENHA }}
+            CYPRESS_usuario: ${{ secrets.CYPRESS_USUARIO }} 
