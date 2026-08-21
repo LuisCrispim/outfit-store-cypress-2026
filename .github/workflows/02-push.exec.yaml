@@ -1,25 +1,38 @@
+# CI de nível 02 - Execução ao fazer push na main
+
+# nome da pipeline
 name: 'Execução Push'
 
+# gatilhos / triggers - regras de disparo
+# gatilho automático em push para main
 on:
   push:
     branches:
       - main
 
+# tarefas dentro da pipeline = jobs
 jobs:
+  # nome do job
   e2e-tests:
+    # máquina onde o job vai rodar
     runs-on: ubuntu-latest
 
+    # passos do job
     steps:
+      # clona o projeto
       - uses: actions/checkout@v4
 
+      # instala o Node.js no ambiente
       - uses: actions/setup-node@v4
         with:
           node-version: latest
           cache: npm
 
+      # instala as dependências do projeto
       - name: Instalando dependências
         run: npm ci
 
+      # executa os testes e2e
       - name: Executando os testes e2e
         env:
           CYPRESS_email: ${{ secrets.CYPRESS_EMAIL }}
@@ -27,6 +40,7 @@ jobs:
           CYPRESS_usuario: ${{ secrets.CYPRESS_USUARIO }}
         run: npm run cy:run
 
+      # salva o relatório mesmo se falhar
       - name: Salvando relatórios de testes
         uses: actions/upload-artifact@v4
         if: ${{ always() }}
